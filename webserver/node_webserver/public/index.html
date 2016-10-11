@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Johns test sida</title>
+    <script src="javascript/jquery-3.1.1.js"></script>
+    <script src="javascript//d3/d3.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="src/jquery.percentageloader-0.2.js"></script>
+    <link rel="stylesheet" href="src/jquery.percentageloader-0.2.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="container">
+    <form action="">
+        <input type="radio" name="workers" checked="true" value="1">One workers<br>
+        <input type="radio" name="workers" value="2">Two workers<br>
+        <input type="radio" name="workers" value="4">Four workers<br>
+        <input type="radio" name="workers" value="8">Eight workers
+    </form>
+    <form action="">
+        <input type="radio" name="chunks" checked="true" value="4">Number of tweet chunks: 4<br>
+        <input type="radio" name="chunks" value="6">Number of tweets chunks: 6<br>
+        <input type="radio" name="chunks" value="8">Number of tweets chunks: 8
+    </form>
+    <form action="">
+        <input type="radio" name="concurrency" checked="true" value="4">Multiprocessing concurrency in each worker: 4<br>
+        <input type="radio" name="concurrency" value="8">Multiprocessing concurrency in each worker: 8<br>
+    </form>
+    <div id="topLoader"></div>
+    <button class="req_parse_tweets" id="animateButton">Start workers</button>
+</div>
+<div class="execution-time"></div>
+<svg width="960" height="500">
+</svg>
+</body>
+<script src="/javascript/index.js"></script>
+<script src="/javascript/d3/charts.js"></script>
+</html>

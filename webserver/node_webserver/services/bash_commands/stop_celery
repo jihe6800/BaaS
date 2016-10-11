@@ -1,0 +1,7 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+cd ..
+cd ..
+cd ..
+
+celery multi stopwait worker1 worker2 worker3 worker4 worker5 worker6 worker7 worker8 -A proj -l info

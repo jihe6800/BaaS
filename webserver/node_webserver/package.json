@@ -1,0 +1,17 @@
+{
+  "name": "node_webserver",
+  "version": "1.0.0",
+  "description": "Standard webserver implementation, with different options",
+  "main": "webserver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.14.0",
+    "request": "^2.75.0",
+    "socket.io": "^1.5.0",
+    "zerorpc": "^0.9.6"
+  }
+}

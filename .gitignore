@@ -1,0 +1,7 @@
+node_modules/
+twitter_data/
+*.log
+*.swp
+*.pyc
+tags
+.idea

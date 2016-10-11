@@ -1,0 +1,11 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+cd ..
+cd ..
+cd ..
+args=("$@")
+for (( i=1; i<=${args[0]}; i++ ))
+do
+   celery multi start worker${i} -A proj --concurrency=${args[1]}
+done
+

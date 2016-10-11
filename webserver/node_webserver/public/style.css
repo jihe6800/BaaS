@@ -1,0 +1,43 @@
+form {
+    display: inline-block;
+}
+
+#container {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+/* Graph styling */
+
+.bar {
+    fill: steelblue;
+}
+
+.bar:hover {
+    fill: brown;
+}
+
+.axis--x path {
+    display: none;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+#topLoader {
+    width: 256px;
+    height: 256px;
+    margin-bottom: 32px;
+}
+
+#container {
+    width: 940px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#animateButton {
+    width: 256px;
+}
