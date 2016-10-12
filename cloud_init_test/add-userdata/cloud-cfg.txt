@@ -1,0 +1,14 @@
+#cloud-config
+
+apt_update: true
+apt_upgrade: true
+packages:
+ - python-pip
+ - python-dev
+byobu_default: system 
+
+runcmd:
+- source /home/ubuntu/.bashrc
+- apt-get update
+- curl -fsSL https://get.docker.com/ | sh
+- curl -fsSL https://get.docker.com/gpg | sudo apt-key add -
