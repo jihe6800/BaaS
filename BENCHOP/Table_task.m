@@ -43,7 +43,7 @@ Methods={'MC','MC-S','QMC-S','MLMC','MLMC-A',...
 
 
 %% Problem 1 a) I
-if (num_workers==6 && worker==1) || (num_workers==3 && worker==1) || (num_workers==1 && worker==1)
+if (num_workers==6 && worker==1) || (num_workers==3 && worker==1) || (num_workers==2 && worker==1) || (num_workers==1 && worker==1)
     display('Problem 1 a) I');
     rootpath=pwd;
     S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15;
@@ -68,7 +68,7 @@ cd(rootpath);
 end
 
 %% Problem 1 b) I
-if (num_workers==6 && worker==2) || (num_workers==3 && worker==1) || (num_workers==1 && worker==1)
+if (num_workers==6 && worker==2) || (num_workers==3 && worker==1) || (num_workers==2 && worker==1) || (num_workers==1 && worker==1)
     display('Problem 1 b) I');
     rootpath=pwd;
     S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15;
@@ -94,7 +94,7 @@ end
 
 
 %% Problem 1 c) I
-if (num_workers==6 && worker==3) || (num_workers==3 && worker==2) || (num_workers==1 && worker==1)
+if (num_workers==6 && worker==3) || (num_workers==3 && worker==2) || (num_workers==2 && worker==1) || (num_workers==1 && worker==1)
     display('Problem 1 c) I');
     rootpath=pwd;
     S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15; B=1.25*K;
@@ -120,7 +120,7 @@ end
 
 
 %% Problem 1 a) II
-if (num_workers==6 && worker==4) || (num_workers==3 && worker==2) || (num_workers==1 && worker==1)
+if (num_workers==6 && worker==4) || (num_workers==3 && worker==2) || (num_workers==2 && worker==2) || (num_workers==1 && worker==1)
     display('Problem 1 a) II');
     rootpath=pwd;
     S=[97,98,99]; sig=0.01; r=0.1; T=0.25; K=100;
@@ -146,7 +146,7 @@ end
 
 
 %% Problem 1 b) II
-if (num_workers==6 && worker==5) || (num_workers==3 && worker==3) || (num_workers==1 && worker==1)
+if (num_workers==6 && worker==5) || (num_workers==3 && worker==3) || (num_workers==2 && worker==2) || (num_workers==1 && worker==1)
     display('Problem 1 b) II');
     rootpath=pwd;
     S=[97,98,99]; K=100; T=0.25; r=0.1; sig=0.01;
@@ -171,7 +171,7 @@ cd(rootpath);
 end
 
 %% Problem 1 c) II
-if (num_workers==6 && worker==6) || (num_workers==3 && worker==3) || (num_workers==1 && worker==1)
+if (num_workers==6 && worker==6) || (num_workers==3 && worker==3) || (num_workers==2 && worker==2) || (num_workers==1 && worker==1)
     display('Problem 1 c) II');
     rootpath=pwd;
     S=[97,98,99]; sig=0.01; r=0.1; T=0.25; K=100; B=1.25*K;
