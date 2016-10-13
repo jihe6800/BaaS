@@ -8,15 +8,13 @@ $(document).ready(function() {
 
     var tot_tasks = 0;
     // Setup button to send request
-    $('.req_parse_tweets').on('click', () => {
+    $('.req_benchmark').on('click', () => {
         d3.select('svg').selectAll("*").remove();
-        let num_tweet_chunks = $('input[name=chunks]:checked').val();
         let num_workers = $('input[name=workers]:checked').val();
-        let concurrency = $('input[name=concurrency]:checked').val();
-        data = { num_tweet_chunks, num_workers, concurrency }
-        tot_tasks = num_tweet_chunks;
+        data = { num_workers }
+        tot_tasks = num_workers;
         animateFunc(0);
-        socket.emit('req_parse_tweets', data); });
+        socket.emit('req_benchmark', data); });
 
     socket.on('res_parse_tweets_partial', function (data) {
         console.log(data);
