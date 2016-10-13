@@ -56,7 +56,7 @@ else:
 
 
 print "Creating instance ... "
-instance = nova.servers.create(name="grupp_test_3", image=image, flavor=flavor, userdata=userdata, nics=nics,security_groups=secgroups, key_name="johntest")
+instance = nova.servers.create(name="grupp2_test_1", image=image, flavor=flavor, userdata=userdata, nics=nics,security_groups=secgroups, key_name="johntest")
 inst_status = instance.status
 print "waiting for 10 seconds.. "
 time.sleep(10)
