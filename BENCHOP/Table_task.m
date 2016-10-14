@@ -23,7 +23,7 @@
 % ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 % POSSIBILITY OF SUCH DAMAGE.
 
-function res = Table_task(worker,num_workers)
+function res = Table_task(worker,num_workers,num_solvers)
 
 %clear
 %close all
@@ -39,6 +39,19 @@ Methods={'MC','MC-S','QMC-S','MLMC','MLMC-A',...
     'FFT','FGL','COS',...
     'FD','FD-NU','FD-AD',...
     'RBF','RBF-FD','RBF-PUM','RBF-LSML','RBF-AD','RBF-MLT'};
+
+timeBSamPutUI=zeros(num_solvers,1);
+relerrBSamPutUI=zeros(num_solvers,1); 
+timeBSeuCallUI=zeros(num_solvers,1);
+relerrBSeuCallUI=zeros(num_solvers,1);
+timeBSupoutCallI=zeros(num_solvers,1);
+relerrBSupoutCallI=zeros(num_solvers,1);
+timeBSeuCallUII=zeros(num_solvers,1);
+relerrBSeuCallUII=zeros(num_solvers,1);
+timeBSamPutUII=zeros(num_solvers,1);
+relerrBSamPutUII=zeros(num_solvers,1);
+timeBSupoutCallII=zeros(num_solvers,1);
+relerrBSupoutCallII=zeros(num_solvers,1);
 
 
 
@@ -221,5 +234,7 @@ end
 %input.makeCompleteLatexDocument = 0;
 
 %latex = latexTable(input);
+
+res= [timeBSamPutUI relerrBSamPutUI timeBSeuCallUI relerrBSeuCallUI timeBSupoutCallI relerrBSupoutCallI timeBSeuCallUII relerrBSeuCallUII timeBSamPutUII relerrBSamPutUII timeBSupoutCallII relerrBSupoutCallII];
 
 end
