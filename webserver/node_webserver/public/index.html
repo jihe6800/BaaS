@@ -16,20 +16,13 @@
     <form action="">
         <input type="radio" name="workers" checked="true" value="1">One workers<br>
         <input type="radio" name="workers" value="2">Two workers<br>
+        <input type="radio" name="workers" value="3">Four workers<br>
         <input type="radio" name="workers" value="4">Four workers<br>
-        <input type="radio" name="workers" value="8">Eight workers
-    </form>
-    <form action="">
-        <input type="radio" name="chunks" checked="true" value="4">Number of tweet chunks: 4<br>
-        <input type="radio" name="chunks" value="6">Number of tweets chunks: 6<br>
-        <input type="radio" name="chunks" value="8">Number of tweets chunks: 8
-    </form>
-    <form action="">
-        <input type="radio" name="concurrency" checked="true" value="4">Multiprocessing concurrency in each worker: 4<br>
-        <input type="radio" name="concurrency" value="8">Multiprocessing concurrency in each worker: 8<br>
+        <input type="radio" name="workers" value="5">Four workers<br>
+        <input type="radio" name="workers" value="6">Eight workers
     </form>
     <div id="topLoader"></div>
-    <button class="req_parse_tweets" id="animateButton">Start workers</button>
+    <button class="req_benchmark" id="animateButton">Start workers</button>
 </div>
 <div class="execution-time"></div>
 <svg width="960" height="500">

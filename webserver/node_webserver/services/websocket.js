@@ -10,8 +10,8 @@ function startServerSocket() {
          * Socket Routes
          */
         
-        clientSocket.on('req_parse_tweets', (data) => {
-            socketRoutes.socketHandler('req_parse_tweets', data,
+        clientSocket.on('req_benchmark', (data) => {
+            socketRoutes.socketHandler('req_benchmark', data,
                 (count_finished) => {
                 clientSocket.emit('res_parse_tweets_partial', count_finished);
             }, (final_result, timeSpent, config) => {

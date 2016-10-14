@@ -3,11 +3,9 @@ from proj.tasks import getCountFile
 import json
 
 class HelloRPC(object):
-    def req_parse_tweets(self, data_name):
-        path = "./proj/twitter_data/" + data_name
-        print data_name
-        print path
-        result = getCountFile.delay(path)
+    def req_benchmark(self, num_workers):
+        print num_workers
+        result = getBenchmark.delay(num_workers)
         result = result.get(timeout=40)
         return result
 

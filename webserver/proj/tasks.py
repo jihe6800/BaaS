@@ -1,42 +1,15 @@
 from __future__ import absolute_import
 
 from proj.celery import app 
+from oct2
 
 import json
 import re
 
-def countOccurence( word, data ):
-        print "counting file"
-	counter = 0
-	for tweet in data:
-		if(re.search(word, tweet["text"], re.IGNORECASE) != None) : 
-			counter = counter + 1
-	return counter
-
-def fetchPreprocessFile ( path ):
-    data = file(path, "r").read().replace("\n\n", ", ")
-    data = data[:-2]
-    data = "[" + data + "]" 
-    jsonData = json.loads(data)
-    jsonData = filter(lambda x: not(x["retweeted"]), jsonData)
-    return jsonData
-
 @app.task
-def add(x, y):
-    return x + y
+def getBenchmark (num_workers):
 
 
-@app.task
-def mul(x, y):
-    return x * y
-
-
-@app.task
-def xsum(numbers):
-    return sum(numbers)
-
-@app.task
-def getCountFile ( path ):
     jsonData = fetchPreprocessFile(path)
     counter = {
         'han': 0,
