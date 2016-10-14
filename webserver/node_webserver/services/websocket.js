@@ -10,12 +10,13 @@ function startServerSocket() {
          * Socket Routes
          */
         
-        clientSocket.on('req_benchmark', (data) => {
-            socketRoutes.socketHandler('req_benchmark', data,
+        clientSocket.on('req_benchmark', (num_tasks) => {
+            let num_solvers = 2;
+            socketRoutes.req_benchmark(num_tasks, num_solvers,
                 (count_finished) => {
-                clientSocket.emit('res_parse_tweets_partial', count_finished);
+                clientSocket.emit('res_benchmark_partial', count_finished);
             }, (final_result, timeSpent, config) => {
-                    clientSocket.emit('res_parse_tweets_final', final_result, timeSpent, config);
+                    clientSocket.emit('res_benchmark_final', final_result, timeSpent, num_tasks);
             });
         });
     });

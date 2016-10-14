@@ -10,21 +10,22 @@ $(document).ready(function() {
     // Setup button to send request
     $('.req_benchmark').on('click', () => {
         d3.select('svg').selectAll("*").remove();
-        let num_workers = $('input[name=workers]:checked').val();
-        data = { num_workers }
-        tot_tasks = num_workers;
+        let num_tasks = $('input[name=tasks]:checked').val();
+        tot_tasks = num_tasks;
         animateFunc(0);
-        socket.emit('req_benchmark', data); });
+        socket.emit('req_benchmark', num_tasks); 
+    });
 
-    socket.on('res_parse_tweets_partial', function (data) {
+    socket.on('res_benchmark_partial', function (data) {
         console.log(data);
         animateFunc(data);
     //    loadGraph(data);
     })
 
-    socket.on('res_parse_tweets_final', function (data, timeSpent, config) {
-        addExecutionTime(timeSpent, config);
-            loadGraph(data);
+    socket.on('res_benchmark_final', function (final_result, timeSpent, num_tasks) {
+        console.log(final_result);
+        addExecutionTime(timeSpent, num_tasks);
+        //    loadGraph(data);
     })
     /**
      * Progressbar

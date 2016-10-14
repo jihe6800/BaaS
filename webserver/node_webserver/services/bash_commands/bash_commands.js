@@ -6,7 +6,7 @@ var child;
 function start_python() {
     process.chdir(__dirname);
     process.chdir('./../../../');
-    child = exec(`python py_zero.py`, function (error, stdout, stderr) {
+    child = exec(`python py_test.py`, function (error, stdout, stderr) {
         console.log('stdout: ' + stdout);
         console.log('stderr: ' + stderr);
         if (error !== null) {
