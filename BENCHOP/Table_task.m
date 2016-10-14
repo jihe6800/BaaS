@@ -33,7 +33,7 @@ format long
 % addpath(genpath('./')); %adds all the functions from subfolders to the path
 % mfiles=getfilenames('./','BSeuCallU*.m')
 
-warning off
+%warning off
 
 Methods={'MC','MC-S','QMC-S','MLMC','MLMC-A',...
     'FFT','FGL','COS',...
