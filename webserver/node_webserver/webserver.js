@@ -20,7 +20,7 @@ require('./services/websocket.js').startServerSocket();
  * Zerorpc
  */
 require('./services/zerorpc.js').startZerorpc();
-bash_commands.start_python();
+//bash_commands.start_python();
 
 server.listen(5000);
 console.log("Webserver running on port 5000...")

@@ -3,5 +3,5 @@ cd ..
 cd ..
 cd ..
 ls
-python py_zero.py
+python py_test.py
 
