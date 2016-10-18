@@ -1,0 +1,27 @@
+#!/bin/bash
+
+cd /home/ubuntu/
+sudo git clone https://github.com/johnTunell/Applied_cloud_john.git
+cd Applied_cloud_john/Assignment_3/node_webserver/
+sudo apt-get install -y libzmq5-dev
+pip install zeromq
+pip install zerorpc
+pip install celery 
+sudo apt-get install -y rabbitmq-server
+sudo npm install
+cd .. 
+
+cd node_webserver
+
+sudo rabbitmqctl add_user john john123
+sudo rabbitmqctl add_vhost myvhost
+sudo rabbitmqctl add_vhost john_vhost
+sudo rabbitmqctl set_permissions -p john_vhost john ".*" ".*" ".*"
+
+pip install flower
+cd ..
+flower -A proj --port=5555&
+
+#sudo python py_zero.py&
+#cd node_webserver
+#sudo node webserver&

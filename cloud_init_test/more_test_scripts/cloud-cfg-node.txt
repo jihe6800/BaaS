@@ -1,0 +1,18 @@
+#cloud-config
+
+apt_update: true
+apt_upgrade: true
+packages:
+ - cowsay
+ - python-pip
+ - python-dev
+ - build-essential
+
+runcmd:
+- source /home/ubuntu/.bashrc
+- sudo apt-get update
+- curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash
+- sudo apt-get install -y nodejs
+- pip install -U Celery
+- sudo wget http://130.238.29.253:8080/swift/v1/john_twitter_tar/startup_script_webserver
+

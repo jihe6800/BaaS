@@ -1,0 +1,26 @@
+#cloud-config
+
+runcmd:
+# - echo "export PATH=$PATH:/usr/games" >> /home/ubuntu/.bashrc  
+# - source /home/ubuntu/.bashrc
+# - [] 
+# - sudo git clone https://github.com/johnTunell/Applied_cloud_john.git
+# - [curl, -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -]
+# - sudo apt-get install -y nodejs
+# - cd Applied_cloud_john/Assignment_3/proj/
+# - sudo wget http://130.238.29.253:8080/swift/v1/john_ass3_files/twitter_data
+# -  npm install
+#-  apt-get install libzmq5-dev
+#- pip install zeromq
+#- pip install celery 
+#- sudo apt-get install rabbitmq-server
+
+#- pip install -U Celery
+#- sudo git clone https://github.com/johnTunell/Applied_cloud_john.git
+#- cd Applied_cloud_john/Assignment3/proj
+#- sudo mkdir tweet_data
+#- cd tweet_data
+#- sudo wget http://130.238.29.253:8080/swift/v1/john_twitter_tar/twitter_data.tar
+#- sudo tar -xvf twitter_data.tar
+#- cd ./../../
+- celery -A proj worker
