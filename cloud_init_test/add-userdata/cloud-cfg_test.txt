@@ -1,0 +1,19 @@
+#cloud-config
+
+apt_update: true
+apt_upgrade: true
+
+write_files:
+  - path: test_script.sh
+    content: |
+      cd /home/ubuntu     
+      celery --version
+
+runcmd:
+- source /home/ubuntu/.bashrc
+- pip install celery
+- sudo pip install python-swiftclient
+- bash test_script.sh
+- cd /home/ubuntu
+- export C_FORCE_ROOT="true"
+- celery -A celeryapp worker --loglevel=info
