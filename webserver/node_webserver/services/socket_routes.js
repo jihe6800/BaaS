@@ -66,7 +66,8 @@ function req_benchmark(num_tasks, num_solvers, callback1, callback2) {
     var begin=Date.now();
     let worker = 0;
     for(let i = 0; i < num_tasks; i++) {
-        zeroRpcClient.invoke("req_benchmark", i, num_tasks, num_solvers, test_data, function(error, res) {
+        //zeroRpcClient.invoke("req_benchmark", i, num_tasks, num_solvers, test_data, function(error, res) {
+        zeroRpcClient.invoke("req_benchmark", 3, function(error, res) {
             final_result = count_finished === 0 ? res : final_result;
             count_finished++;
             callback1(count_finished);
