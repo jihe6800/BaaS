@@ -23,7 +23,7 @@
 % ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 % POSSIBILITY OF SUCH DAMAGE.
 
-function res = Table_task(worker,num_workers,num_solvers);
+function res = Table_task(worker,num_workers,num_solvers)
 
 %clear
 %close all
@@ -35,10 +35,7 @@ format long
 
 %warning off
 
-Methods={'MC','MC-S','QMC-S','MLMC','MLMC-A',...
-    'FFT','FGL','COS',...
-    'FD','FD-NU','FD-AD',...
-    'RBF','RBF-FD','RBF-PUM','RBF-LSML','RBF-AD','RBF-MLT'};
+Methods={'COS','FD-NU','FD-AD'};
 
 timeBSamPutUI=zeros(num_solvers,1);
 relerrBSamPutUI=zeros(num_solvers,1); 
@@ -58,7 +55,8 @@ relerrBSupoutCallII=zeros(num_solvers,1);
 %% Problem 1 a) I
 if (num_workers==6 && worker==1) || (num_workers==3 && worker==1) || (num_workers==2 && worker==1) || (num_workers==1 && worker==1)
     %display('Problem 1 a) I');
-    rootpath=pwd;
+    rootpath='/home/ubuntu/BaaS/BENCHOP'; % var pwd
+    cd(rootpath)
     S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15;
     U=[2.758443856146076 7.485087593912603 14.702019669720769];
 
@@ -77,13 +75,13 @@ if (num_workers==6 && worker==1) || (num_workers==3 && worker==1) || (num_worker
             end
         end
     end
-cd(rootpath);    
+cd(rootpath)    
 end
 
 %% Problem 1 b) I
 if (num_workers==6 && worker==2) || (num_workers==3 && worker==1) || (num_workers==2 && worker==1) || (num_workers==1 && worker==1)
     %display('Problem 1 b) I');
-    rootpath=pwd;
+    rootpath='/home/ubuntu/BaaS/BENCHOP' % var pwd
     S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15;
     U=[10.726486710094511 4.820608184813253 1.828207584020458];
 
@@ -109,7 +107,7 @@ end
 %% Problem 1 c) I
 if (num_workers==6 && worker==3) || (num_workers==3 && worker==2) || (num_workers==2 && worker==1) || (num_workers==1 && worker==1)
     %display('Problem 1 c) I');
-    rootpath=pwd;
+    rootpath='/home/ubuntu/BaaS/BENCHOP' % var pwd
     S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15; B=1.25*K;
     U=[1.822512255945242 3.294086516281595 3.221591131246868];
 
@@ -135,7 +133,7 @@ end
 %% Problem 1 a) II
 if (num_workers==6 && worker==4) || (num_workers==3 && worker==2) || (num_workers==2 && worker==2) || (num_workers==1 && worker==1)
     %display('Problem 1 a) II');
-    rootpath=pwd;
+    rootpath='/home/ubuntu/BaaS/BENCHOP' % var pwd
     S=[97,98,99]; sig=0.01; r=0.1; T=0.25; K=100;
     U=[0.033913177006141   0.512978189232598   1.469203342553328];
 
@@ -161,7 +159,7 @@ end
 %% Problem 1 b) II
 if (num_workers==6 && worker==5) || (num_workers==3 && worker==3) || (num_workers==2 && worker==2) || (num_workers==1 && worker==1)
     %display('Problem 1 b) II');
-    rootpath=pwd;
+    rootpath='/home/ubuntu/BaaS/BENCHOP' % var pwd
     S=[97,98,99]; K=100; T=0.25; r=0.1; sig=0.01;
     U=[3.000000000000682 2.000000000010786   1.000000000010715];
 
@@ -186,7 +184,7 @@ end
 %% Problem 1 c) II
 if (num_workers==6 && worker==6) || (num_workers==3 && worker==3) || (num_workers==2 && worker==2) || (num_workers==1 && worker==1)
     %display('Problem 1 c) II');
-    rootpath=pwd;
+    rootpath='/home/ubuntu/BaaS/BENCHOP' % var pwd
     S=[97,98,99]; sig=0.01; r=0.1; T=0.25; K=100; B=1.25*K;
     U=[0.033913177006134   0.512978189232598   1.469203342553328];
 
@@ -236,10 +234,13 @@ end
 %latex = latexTable(input);
 
 result=[timeBSamPutUI' relerrBSamPutUI' timeBSeuCallUI' relerrBSeuCallUI' timeBSupoutCallI' relerrBSupoutCallI' timeBSeuCallUII' relerrBSeuCallUII' timeBSamPutUII' relerrBSamPutUII' timeBSupoutCallII' relerrBSupoutCallII'];
-disp("START_OUTPUT")
-for K = 1:36
-disp(result(K))
-end
-disp("END_OUTPUT")
+
+%disp("START_OUTPUT")
+%for K = 1:36
+%disp(result(K))
+%end
+%disp("END_OUTPUT")
+res=[timeBSamPutUI relerrBSamPutUI timeBSeuCallUI relerrBSeuCallUI timeBSupoutCallI relerrBSupoutCallI timeBSeuCallUII relerrBSeuCallUII timeBSamPutUII relerrBSamPutUII timeBSupoutCallII relerrBSupoutCallII]
+%disp(res)
 end
 
