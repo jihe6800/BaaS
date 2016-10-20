@@ -28,6 +28,8 @@ $(document).ready(function() {
         console.log(timeSpent);
         console.log(num_tasks);
         addExecutionTime(timeSpent, num_tasks);
+        plotting_bar(final_result, "time");
+        plotting_bar(final_result, "error");
         //    loadGraph(data);
     })
     /**
@@ -81,71 +83,54 @@ function addExecutionTime(timeSpent, config) {
    $('.execution-time').append(pElement);
 }
 
-function loadGraph(data) {
-    var x_axis = [];
-    var y_axis = [];
-    var new_data = [];
-    i = 0;
-    for (var key in data) {
-        if (data.hasOwnProperty(key)) {
-            x_axis.push(key);
-            y_axis.push(data[key]);
-            new_data[i] = {"letter": key, "frequency": data[key]};
-            i++;
-        }
-    }
-    data2 = {x_axis, y_axis}
-    console.log(x_axis);
-    console.log(y_axis);
+ function plotting_bar(object,type) {
+  
+  var COS_type = 'COS ' + type;
+  var FDAD_type = 'FD_AD ' + type;
+  var FDNU_type = 'FD_NU ' + type;
 
+  var trace1 = {
+  x: ['European standard', 'American standard', 'Barrier standard', 'European challenging', 'American challenging', 'Barrier challenging'], 
+  y: [object[COS_type]['European standard'], object[COS_type]['American standard'], object[COS_type]['Barrier standard'], object[COS_type]['European challenging'], object[COS_type]['American challenging'], object[COS_type]['Barrier challenging']],
+  type: 'bar',
+  name: 'COS',
+  marker: {
+    color: 'rgb(49,130,189)',
+    opacity: 0.7
+  }
+};
 
-    var svg = d3.select("svg"),
-        margin = {top: 20, right: 20, bottom: 30, left: 40},
-        width = +svg.attr("width") - margin.left - margin.right,
-        height = +svg.attr("height") - margin.top - margin.bottom;
+var trace2 = {
+  x: ['European standard', 'American standard', 'Barrier standard', 'European challenging', 'American challenging', 'Barrier challenging'], 
+  y: [object[FDAD_type]['European standard'], object[FDAD_type]['American standard'], object[FDAD_type]['Barrier standard'], object[FDAD_type]['European challenging'], object[FDAD_type]['American challenging'], object[FDAD_type]['Barrier challenging']],
+  type: 'bar',
+  name: 'FD-AD',
+  marker: {
+    color: 'rgb(204,204,204)',
+    opacity: 0.5
+  }
+};
 
-    var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
-        y = d3.scaleLinear().rangeRound([height, 0]);
+var trace3 = {
+  x: ['European standard', 'American standard', 'Barrier standard', 'European challenging', 'American challenging', 'Barrier challenging'], 
+  y: [object[FDNU_type]['European standard'], object[FDNU_type]['American standard'], object[FDNU_type]['Barrier standard'], object[FDNU_type]['European challenging'], object[FDNU_type]['American challenging'], object[FDNU_type]['Barrier challenging']],
+  type: 'bar',
+  name: 'FD-NU',
+  marker: {
+    color: 'rgb(116,173,209)',
+    opacity: 0.5
+  }
+};
 
-    var g = svg.append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+var data = [trace1, trace2, trace3];
 
-    x.domain(x_axis.map(function (d) {
-        return d;
-    }));
-    y.domain([0, d3.max(new_data, function (d) {
-        console.log(d);
-        return d.frequency;
-    })]);
+var layout = {
+  title: type,
+  barmode: 'group'
+};
 
-    g.append("g")
-        .attr("class", "axis axis--x")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
+var divname='myDiv ' + type;
+Plotly.newPlot(divname, data, layout);
 
-    g.append("g")
-        .attr("class", "axis axis--y")
-        .call(d3.axisLeft(y).ticks())
-        .append("text")
-        .attr("transform", "rotate(-90)")
-        .attr("y", 6)
-        .attr("dy", "0.71em")
-        .attr("text-anchor", "end")
-        .text("Frequency");
-
-    g.selectAll(".bar")
-        .data(new_data)
-        .enter().append("rect")
-        .attr("class", "bar")
-        .attr("x", function (d) {
-            return x(d.letter);
-        })
-        .attr("y", function (d) {
-            console.log(d.frequency);
-            return y(d.frequency);
-        })
-        .attr("width", x.bandwidth())
-        .attr("height", function (d) {
-            return height - y(d.frequency);
-        });
-}
+  }
+ 
