@@ -39,7 +39,7 @@ def contextualizeVM(instanceName):
 
     #print("Path at terminal when executing this file")
     #print(os.getcwd() + "\n")
-    cfg_file_path =  os.getcwd()+'/cloud-cfg_test.txt'
+    cfg_file_path =  os.getcwd()+'/cloud-cfg_final.txt'
     if os.path.isfile(cfg_file_path):
         userdata = open(cfg_file_path)
     else:
@@ -58,7 +58,7 @@ def contextualizeVM(instanceName):
 
     print "Creating instance ... "
     #instance = nova.servers.create(name="majae_dist", image=image, flavor=flavor, key_name="majae_keypair_2", nics=nics,security_groups=secgroups)
-    instance = nova.servers.create(name=instanceName, image=image, flavor=flavor, userdata=userdata, key_name="grupp2_keypair", nics=nics,security_groups=secgroups)
+    instance = nova.servers.create(name=instanceName, image=image, flavor=flavor, key_name="grupp2_keypair", userdata=userdata, nics=nics,security_groups=secgroups)
     inst_status = instance.status
     print "waiting for 10 seconds.. "
     time.sleep(10)
@@ -76,4 +76,11 @@ def contextualizeVM(instanceName):
         print "Instance booted! Name: " + instance.name + " Status: " +instance.status+ ", floating IP attached " + floating_ip.ip
     else:
         print "Instance booted! Name: " + instance.name + " Status: " +instance.status+ ", floating IP missing"
-                        
+
+
+#contextualizeVM("group2_worker1") 
+#contextualizeVM("group2_worker2")
+#contextualizeVM("group2_worker3")
+#contextualizeVM("group2_worker4")
+##contextualizeVM("group2_worker5")
+contextualizeVM("group2_worker6")                       
