@@ -79,7 +79,7 @@ def contextualizeVM(instanceName):
 
 
 #contextualizeVM("group2_worker1") 
-contextualizeVM("group2_worker2")
+#contextualizeVM("group2_worker2")
 #contextualizeVM("group2_worker3")
 #contextualizeVM("group2_worker4")
 ##contextualizeVM("group2_worker5")

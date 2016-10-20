@@ -55,7 +55,7 @@ relerrBSupoutCallII=zeros(num_solvers,1);
 %% Problem 1 a) I
 if (num_workers==6 && worker==1) || (num_workers==3 && worker==1) || (num_workers==2 && worker==1) || (num_workers==1 && worker==1)
     %display('Problem 1 a) I');
-    rootpath='/home/dinotrainer/progs/applied_cloud/BaaS/BENCHOP'; % var pwd
+    rootpath='/home/ubuntu/BaaS/BENCHOP'; % var pwd
     cd(rootpath)
     S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15;
     U=[2.758443856146076 7.485087593912603 14.702019669720769];
@@ -81,7 +81,7 @@ end
 %% Problem 1 b) I
 if (num_workers==6 && worker==2) || (num_workers==3 && worker==1) || (num_workers==2 && worker==1) || (num_workers==1 && worker==1)
     %display('Problem 1 b) I');
-    rootpath='/home/dinotrainer/progs/applied_cloud/BaaS/BENCHOP' % var pwd
+    rootpath='/home/ubuntu/BaaS/BENCHOP' % var pwd
     S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15;
     U=[10.726486710094511 4.820608184813253 1.828207584020458];
 
@@ -107,7 +107,7 @@ end
 %% Problem 1 c) I
 if (num_workers==6 && worker==3) || (num_workers==3 && worker==2) || (num_workers==2 && worker==1) || (num_workers==1 && worker==1)
     %display('Problem 1 c) I');
-    rootpath='/home/dinotrainer/progs/applied_cloud/BaaS/BENCHOP' % var pwd
+    rootpath='/home/ubuntu/BaaS/BENCHOP' % var pwd
     S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15; B=1.25*K;
     U=[1.822512255945242 3.294086516281595 3.221591131246868];
 
@@ -133,7 +133,7 @@ end
 %% Problem 1 a) II
 if (num_workers==6 && worker==4) || (num_workers==3 && worker==2) || (num_workers==2 && worker==2) || (num_workers==1 && worker==1)
     %display('Problem 1 a) II');
-    rootpath='/home/dinotrainer/progs/applied_cloud/BaaS/BENCHOP' % var pwd
+    rootpath='/home/ubuntu/BaaS/BENCHOP' % var pwd
     S=[97,98,99]; sig=0.01; r=0.1; T=0.25; K=100;
     U=[0.033913177006141   0.512978189232598   1.469203342553328];
 
@@ -159,7 +159,7 @@ end
 %% Problem 1 b) II
 if (num_workers==6 && worker==5) || (num_workers==3 && worker==3) || (num_workers==2 && worker==2) || (num_workers==1 && worker==1)
     %display('Problem 1 b) II');
-    rootpath='/home/dinotrainer/progs/applied_cloud/BaaS/BENCHOP' % var pwd
+    rootpath='/home/ubuntu/BaaS/BENCHOP' % var pwd
     S=[97,98,99]; K=100; T=0.25; r=0.1; sig=0.01;
     U=[3.000000000000682 2.000000000010786   1.000000000010715];
 
@@ -184,7 +184,7 @@ end
 %% Problem 1 c) II
 if (num_workers==6 && worker==6) || (num_workers==3 && worker==3) || (num_workers==2 && worker==2) || (num_workers==1 && worker==1)
     %display('Problem 1 c) II');
-    rootpath='/home/dinotrainer/progs/applied_cloud/BaaS/BENCHOP' % var pwd
+    rootpath='/home/ubuntu/BaaS/BENCHOP' % var pwd
     S=[97,98,99]; sig=0.01; r=0.1; T=0.25; K=100; B=1.25*K;
     U=[0.033913177006134   0.512978189232598   1.469203342553328];
 

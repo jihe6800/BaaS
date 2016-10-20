@@ -14,8 +14,8 @@ function startServerSocket() {
             socketRoutes.req_benchmark(num_tasks, num_solvers,
                 (count_finished) => {
                 clientSocket.emit('res_benchmark_partial', count_finished);
-            }, (final_result, timeSpent) => {
-                    clientSocket.emit('res_benchmark_final', final_result, timeSpent, num_tasks);
+            }, (final_result, timeSpent, worker_times) => {
+                    clientSocket.emit('res_benchmark_final', final_result, timeSpent, num_tasks, worker_times);
             });
         });
     });

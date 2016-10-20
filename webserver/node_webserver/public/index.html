@@ -29,14 +29,15 @@
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script type="text/javascript">
   
-  function plotting_scatter(object_scatter) {
-	var trace1 = {
- 		x: [1, 2, 3, 6],
-  		y: [40, 35, 20, 12],
+  /*function plotting_scatter(object) {
+
+var trace1 = {
+ 		x: ['1', '2', '3', '6'],
+  		y: [object['workers']['w1'], object['workers']['w2'], object['workers']['w3'], object['workers']['w6']],
   		type: 'scatter'
 	};
-
-	var layout = {
+	
+var layout = {
   		title: '',
   		barmode: 'group',
   		xaxis: {
@@ -53,7 +54,7 @@
 
   }
 
-
+*/
   </script>
 
   <div id="myDiv error" style="width: 480px; height: 500px;"><!-- Plotly chart will be drawn inside this DIV --></div>
@@ -65,7 +66,13 @@
   <script>
     var object = {'COS error': {'European standard': 5.3074646414858795e-05, 'Barrier challenging': 0.0, 'European challenging': 0.0, 'American challenging': 0.0, 'Barrier standard': 7.0132532866251299e-05, 'American standard': 2.7458935337011067e-05}, 'FD_NU time': {'European standard': 0.058058261871337891, 'Barrier challenging': 0.0, 'European challenging': 0.0, 'American challenging': 0.0, 'Barrier standard': 0.014276027679443359, 'American standard': 0.013048330942789713}, 'COS time': {'European standard': 0.087412993113199874, 'Barrier challenging': 0.0, 'European challenging': 0.0, 'American challenging': 0.0, 'Barrier standard': 0.049965699513753258, 'American standard': 0.00068171819051106774}, 'FD_AD time': {'European standard': 3.7877199649810791, 'Barrier challenging': 0.0, 'European challenging': 0.0, 'American challenging': 0.0, 'Barrier standard': 0.038843631744384766, 'American standard': 0.031358798344930015}, 'FD_NU error': {'European standard': 8.406296627937529e-05, 'Barrier challenging': 0.0, 'European challenging': 0.0, 'American challenging': 0.0, 'Barrier standard': 9.7509502245426446e-05, 'American standard': 9.6945742805761305e-05}, 'FD_AD error': {'European standard': 9.9543850279897088e-05, 'Barrier challenging': 0.0, 'European challenging': 0.0, 'American challenging': 0.0, 'Barrier standard': 8.6087993886565825e-05, 'American standard': 7.8886835703560434e-05}};
 
-    var object_scatter = {};
+    var object_scatter = {"workers": [
+	{"w1": 40},
+	{"w2": 35},
+	{"w3": 30},
+	{"w6": 20}
+]
+};
 
 plotting_bar(object,'error');
 plotting_bar(object,'time');

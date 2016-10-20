@@ -1,58 +1,59 @@
-from __future__ import absolute_import 
 import json
-import celery
-#import sys
-#sys.path.insert(0, '/home/ubuntu/BaaS/webserver/local_celery')
-#from BaaS.webserver.local_celery.tasks import app
-from celery import app
-#from app.control import inspect
+import sys
+sys.path.insert(0, '/home/ubuntu/BaaS/cloud_init_test/add-userdata')
+from instance_userdata import contextualizeVM
+from test_celery.celery import app
 
 
 def dynamicSpawn(numberOfTasks):
-    with open('workerIDs.json') as json_data:
-        existingWorkers = json.load(json_data)
-    
+
     #Inspect all nodes
     i = app.control.inspect()
 
-    print '********** INSPECT **********'
-    print i
-    print '*****************************'
-    #Return the number of active workers
+    
+    #Return all workers with a list of tasks associated with each
     activeWorkers = i.active()
 
-    print '********** INSPECT.ACTIVE() **********'
-    print i.stats()
-    print '**************************************'
+    keys = i.stats().keys()
+    print keys
+    idleNodes = 0
+
+    #Find the number of idle nodes.
+    for key in keys:
+        if activeWorkers[key] == []:
+            idleNodes += 1
     
-    if(activeWorkers == None):
-        numberOfActiveWorkers = 0
-    else:
-        numberOfActiveWorkers = len(i.active())
-        
-    idleNodes = len(existingWorkers) - numberOfActiveWorkers
     VMsToSpawn = numberOfTasks - idleNodes
+    print "VM:s to spawn: " + str(VMsToSpawn)
+    if(VMsToSpawn <= 0):
+        print "There are already enough workers active."
+        return
 
-    #Just to avoid negative numbers
-    if(VMsToSpawn < 0):
-        VMsToSpawn = 0
-    
-    for VMs in range(VMsToSpawn):
-        existingWorkers = spawnVM(existingWorkers)
+    for VMs in range(1, VMsToSpawn+1, 1):
+        spawnVM(keys, VMs)
+	print VMs
 
-    #Save the current VMs with workers to the JSON file on the master node.
-    with open('workerIDs.json', 'w') as json_data:
-        json.dump(existingWorkers, json_data)
+    desired_vms = len(keys) + VMsToSpawn 
+    actual_vms = len(keys)
+    while actual_vms < desired_vms:
+    	i = app.control.inspect()
 
+	#Return all workers with a list of tasks associated with each
+    	activeWorkers = i.active()
+
+    	keys = i.stats().keys()
+	actual_vms = len(keys)
+
+    return
             
-def spawnVM(existingWorkers):
-    workerID = "group2_worker" + str(len(existingWorkers)+1)
-    existingWorkers[workerID] = True
-    #REAL LAUNCH VM
-    return existingWorkers
+def spawnVM(keys, n):
+    workerID = "group2_worker" + str(len(keys)+n)
+    print "Deploying new VM with ID: " + workerID
+    contextualizeVM(workerID)
+
 
 #
-# THIS FUNCTIONALITY IS CRUCIAL FOR ELASTICITY BUT WILL ONLY BE INCLUDED IN TIME ALLOW IT FOR THIS PROJECT.
+# THIS FUNCTIONALITY IS CRUCIAL FOR ELASTICITY BUT WILL ONLY BE INCLUDED IF TIME ALLOW IT FOR THIS PROJECT.
 #
 def terminateVM():
     workerID = "group2_worker" + str(len(workerIDs))

@@ -1,0 +1,11 @@
+#cloud-config
+
+apt_update: true
+apt_upgrade: true
+
+runcmd:
+- source /home/ubuntu/.bashrc
+- pip install celery
+- cd /home/ubuntu
+- export C_FORCE_ROOT="true"
+- celery -A test_celery worker --loglevel=info
