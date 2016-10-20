@@ -1,5 +1,5 @@
 import zerorpc
-from proj.tasks import getCountFile
+from proj.tasks import getBenchmark
 import json
 
 class HelloRPC(object):

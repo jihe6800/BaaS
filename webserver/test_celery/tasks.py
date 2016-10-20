@@ -3,7 +3,7 @@ from test_celery.celery import app
 import time
 from oct2py import octave
 import pprint
-octave.addpath('/Users/majaengvall/Documents/Cloud computing/Project/BaaS/BENCHOP/')
+octave.addpath('/home/ubuntu/BaaS/BENCHOP')
 
 
 @app.task

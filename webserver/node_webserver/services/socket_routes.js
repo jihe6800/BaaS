@@ -65,16 +65,73 @@ function req_benchmark(num_tasks, num_solvers, callback1, callback2) {
     // Check how many celery workers that are running
     var begin=Date.now();
     let worker = 0;
+    
+    plotVariables = {
+        COSerror: {
+            problem1: 0,
+            problem2: 1,
+            problem3: 0,
+            problem4: 1,
+            problem5: 3,
+            problem6: 1
+        },
+        COStime: { 
+            problem1: 0,
+            problem2: 1,
+            problem3: 0,
+            problem4: 1,
+            problem5: 3,
+            problem6: 1
+        },
+        FD_ADtime: { 
+            problem1: 0,
+            problem2: 1,
+            problem3: 0,
+            problem4: 1,
+            problem5: 3,
+            problem6: 1
+         
+        },
+        FD_ADerror : {
+            problem1: 0,
+            problem2: 1,
+            problem3: 0,
+            problem4: 1,
+            problem5: 3,
+            problem6: 1
+        },
+        FD_NUtime: {
+            problem1: 0,
+            problem2: 1,
+            problem3: 0,
+            problem4: 1,
+            problem5: 3,
+            problem6: 1
+        },
+     FD_NUerror: {
+            problem1: 0,
+            problem2: 1,
+            problem3: 0,
+            problem4: 1,
+            problem5: 3,
+            problem6: 1
+        }
+    }
+
+
     for(let i = 0; i < num_tasks; i++) {
-        zeroRpcClient.invoke("req_benchmark", i, num_tasks, num_solvers, test_data, function(error, res) {
+        zeroRpcClient.invoke("req_benchmark", 1, num_tasks, num_solvers, function(error, res) {
+       // zeroRpcClient.invoke("req_benchmark", 3, function(error, res) {
             final_result = count_finished === 0 ? res : final_result;
             count_finished++;
             callback1(count_finished);
-            /*for (var key in res) {
-                if (res.hasOwnProperty(key)) {
-                    final_result[key] = final_result[key] + res[key];
+                for (var key in plotVariables) {
+                if (plotVariables.hasOwnProperty(key)) {
+                    for(var key2 in plotVariables[key]) {
+                       final_result[key][key2] = res[key][key2];
                 }
-            }*/
+            }
+}
             if(count_finished === parseInt(num_tasks)) {
                 var end=Date.now();
                 var timeSpent=(end-begin)/1000+"secs";
