@@ -12,8 +12,9 @@ $(document).ready(function() {
         d3.select('svg').selectAll("*").remove();
         let num_tasks = $('input[name=tasks]:checked').val();
         tot_tasks = num_tasks;
+        let num_solvers = 3;
         animateFunc(0);
-        socket.emit('req_benchmark', num_tasks); 
+        socket.emit('req_benchmark', num_tasks, num_solvers); 
     });
 
     socket.on('res_benchmark_partial', function (data) {
@@ -24,6 +25,8 @@ $(document).ready(function() {
 
     socket.on('res_benchmark_final', function (final_result, timeSpent, num_tasks) {
         console.log(final_result);
+        console.log(timeSpent);
+        console.log(num_tasks);
         addExecutionTime(timeSpent, num_tasks);
         //    loadGraph(data);
     })

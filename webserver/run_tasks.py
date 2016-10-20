@@ -4,8 +4,9 @@ import json
 
 class HelloRPC(object):
     def req_benchmark(self, worker, num_workers, num_solvers):
-        print num_workers
-        result = getResultBench.delay(1,2,3)
+         
+        print "Worker number: " + str(worker) + " | Number of tasks: " + str(num_workers) + " | Number of solvers: " + str(num_solvers)
+        result = getResultBench.delay(int(worker), int(num_workers), int(num_solvers))
         result = result.get(timeout=4000)
         return result
 
