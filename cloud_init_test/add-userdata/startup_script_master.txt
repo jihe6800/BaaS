@@ -1,0 +1,26 @@
+#!/bin/bash
+
+cd /home/ubuntu/
+sudo git clone https://github.com/jihe6800/BaaS/tree/master/cloud_init_test/add-userdata
+cd BaaS/webserver/node_webserver/
+sudo apt-get install -y libzmq5-dev
+pip install zeromq
+pip install zerorpc
+pip install celery 
+sudo apt-get install -y rabbitmq-server
+sudo npm install
+cd .. 
+
+cd node_webserver
+sudo rabbitmqctl add_user group2 group2_123 
+sudo rabbitmqctl add_vhost group2_vhost 
+sudo rabbitmqctl set_user_tags group2 group2_tag 
+sudo rabbitmqctl set_permissions -p group2_vhost group2 ".*" ".*" ".*"
+
+pip install flower
+cd ..
+flower -A proj --port=5555&
+
+sudo python run_task.py&
+cd node_webserver
+sudo node webserver&
