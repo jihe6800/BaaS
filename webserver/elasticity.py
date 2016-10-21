@@ -37,7 +37,7 @@ def dynamicSpawn(numberOfTasks):
     actual_vms = len(keys)
     while actual_vms < desired_vms:
     	i = app.control.inspect()
-
+	time.sleep(2)
 	#Return all workers with a list of tasks associated with each
     	activeWorkers = i.active()
 

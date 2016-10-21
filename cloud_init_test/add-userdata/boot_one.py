@@ -78,9 +78,9 @@ def contextualizeVM(instanceName):
         print "Instance booted! Name: " + instance.name + " Status: " +instance.status+ ", floating IP missing"
 
 
-#contextualizeVM("group2_worker1") 
+contextualizeVM("group2_worker1") 
 #contextualizeVM("group2_worker2")
 #contextualizeVM("group2_worker3")
 #contextualizeVM("group2_worker4")
-contextualizeVM("group2_worker5")
+#contextualizeVM("group2_worker5")
 #contextualizeVM("group2_worker6")                       
