@@ -7,7 +7,7 @@ var fs = require('fs');
 
 function req_benchmark(num_tasks, num_solvers, callback1, callback2) {
     let count_finished = 0;
-    let final_result;
+    let final_result = {};
     var worker_times = require('./worker_json.json');
     var begin=Date.now();
     
@@ -17,8 +17,9 @@ function req_benchmark(num_tasks, num_solvers, callback1, callback2) {
 //            final_result = count_finished === 0 ? res : final_result;
  //           count_finished++;
   //          callback1(count_finished);              
-	
+	    if(!error) {
             final_result = res[0];
+}
             for(var i = 1; i < res.length; i++) {
 
                 for (var key in res[i]) {
@@ -31,16 +32,20 @@ function req_benchmark(num_tasks, num_solvers, callback1, callback2) {
         }
           //  if(count_finished === parseInt(num_tasks)) {
                 var end=Date.now();
+		var timeSpentFloat = (end-begin)/1000;
                 var timeSpent=(end-begin)/1000+"secs";
-		worker_times.workers["w" + num_tasks] = timeSpent;	
-fs.writeFile("./worker_json.json", worker_times, function(err) {
+
+console.log(worker_times.workers);
+		worker_times.workers["w" + num_tasks.toString()] = timeSpentFloat;	
+
+fs.writeFile("./services/worker_json.json", JSON.stringify(worker_times), function(err) {
     if(err) {
         return console.log(err);
     }
 
     console.log("The file was saved!");
 }); 
-                callback2(final_result, timeSpent, num_tasks, worker_times);
+                callback2(final_result, timeSpent, worker_times);
            // }
         });
 }

@@ -31,6 +31,7 @@ $(document).ready(function() {
         addExecutionTime(timeSpent, num_tasks);
         plotting_bar(final_result, "time");
         plotting_bar(final_result, "error");
+	
 	plotting_scatter(worker_times);
         //    loadGraph(data);
     })
